@@ -3,10 +3,10 @@
 Hi! Welcome to our group project. This is Project 1
 for CST 438 with Dr. C. Our group is group 15, and consists of members:
 
-Gabe Gallagher
-Krisztian Nagy
-Liliana Saavedra
-Krystelle Barroso
+Gabe Gallagher, 
+Krisztian Nagy, 
+Liliana Saavedra, 
+Krystelle Barroso, 
 
 This is a React Native app being emulated and tested with Expo.
 It's main features will include:
