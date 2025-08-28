@@ -6,7 +6,7 @@ for CST 438 with Dr. C. Our group is group 15, and consists of members:
 Gabe Gallagher, 
 Krisztian Nagy, 
 Liliana Saavedra, 
-Krystelle Barroso, 
+Krystelle Barroso 
 
 This is a React Native app being emulated and tested with Expo.
 It's main features will include:
@@ -19,5 +19,7 @@ It's main features will include:
 
 Ideas are still being floated around at this stage of development, 
 and a timeline for project milestones to be made each week is in the works. The deadline for this project is September 28th, 2025.
+
+We are thinking about creating a fitness app and will discuss the features during our next meeting.
 
 Note: The videos Dr. C released for expo emulation seem a little outdated. To emulate this on your local machine, navigate to the project folder in terminal and run "npx expo start".
