@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 
 const loginScreen = () => {
@@ -12,7 +11,7 @@ const loginScreen = () => {
         alignItems: 'center',
         backgroundColor: 'white',
       }}>
-        
+
       <Text>Welcome to BookMark!</Text>
       <Text>Enter your details to log in.</Text>
 
@@ -23,7 +22,10 @@ const loginScreen = () => {
     <TextInput 
         style={styles.textinput}
         placeholder='Password'
-      ></TextInput>    
+      ></TextInput> 
+
+    <Button 
+    title='Submit'></Button>   
     </View>
   );
 };
