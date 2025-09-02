@@ -1,3 +1,6 @@
+
+// default sheet (built in example with React Native Expo)
+
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BlurView } from 'expo-blur';
 import { StyleSheet } from 'react-native';

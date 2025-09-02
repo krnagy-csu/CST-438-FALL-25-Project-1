@@ -1,3 +1,5 @@
+// default sheet (built in example with React Native Expo)
+
 import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {

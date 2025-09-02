@@ -1,3 +1,5 @@
+// default sheet (built in example with React Native Expo)
+
 import { View, type ViewProps } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
