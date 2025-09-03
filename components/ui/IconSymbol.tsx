@@ -1,3 +1,4 @@
+// default sheet (built in example with React Native Expo)
 // Fallback for using MaterialIcons on Android and web.
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';

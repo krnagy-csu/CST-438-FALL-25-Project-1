@@ -1,3 +1,5 @@
+// default sheet (built in example with React Native Expo)
+
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
