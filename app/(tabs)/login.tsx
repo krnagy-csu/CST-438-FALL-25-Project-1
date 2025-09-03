@@ -26,6 +26,10 @@ const loginScreen = () => {
 
     <Button 
     title='Submit'></Button>   
+
+    <Text>Don't have an account?</Text>
+    <Button
+    title = 'Register'></Button>
     </View>
   );
 };
