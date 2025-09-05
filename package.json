@@ -44,13 +44,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@react-native/typescript-config": "^0.81.1",
-    "@types/jest": "^30.0.0",
     "@types/react": "~19.0.10",
-    "@types/react-test-renderer": "^19.1.0",
+    "typescript": "~5.8.3",
     "eslint": "^9.25.0",
-    "eslint-config-expo": "~9.2.0",
-    "typescript": "~5.8.3"
+    "eslint-config-expo": "~9.2.0"
   },
   "private": true
 }
