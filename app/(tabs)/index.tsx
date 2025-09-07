@@ -1,8 +1,12 @@
-import React from 'react';
+import { drizzle } from 'drizzle-orm/singlestore/driver';
+import { useSQLiteContext } from 'expo-sqlite';
+import React, { useEffect } from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
+import * as schema from '@/db/schema';
 
 const loginScreen = () => {
+
   return (
     <View
       style={{
