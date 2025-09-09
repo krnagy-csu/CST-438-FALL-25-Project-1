@@ -1,4 +1,7 @@
-// Recources: https://reactnative.dev/docs/handling-touches
+/*
+  Worked on by Liliana Saavedra
+  Recources: https://reactnative.dev/docs/handling-touches
+*/
 
 
 import { Image } from 'expo-image';
@@ -16,22 +19,32 @@ import { SearchBar } from 'react-native-screens';
 
 
 
+
 export default function HomeScreen() {
   return (
+    //Banner at the top of the page. The parallax effect makes it so the banner on top hides the image in it as you scroll down. 
     <ParallaxScrollView
+    //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)
       headerBackgroundColor={{ light: '#bee8ffff', dark: '#437996ff' }}
-
+    //Image inside the banner, featuring the lovely Monte Ray
+      
       headerImage={
         <Image
           source={require('@/assets/images/otter.png')}
+          //formatted to the style described at the bottom of this file
           style={styles.otterLogo}
         />
+        
       }>
 
+      //New view, including a text box, formatted to the style described at the bottom of this file
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Discover countless titles</ThemedText>
-        {/* <HelloWave /> */}
+        {/* //<HelloWave /> */}
       </ThemedView>
+
+      //      //
+      //New view which includes another text box, a search bar, and a button
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Browse through our library</ThemedText>
         {/* <ThemedText> */}
@@ -47,16 +60,24 @@ export default function HomeScreen() {
           to open developer tools. */}
           
         {/* </ThemedText> */}
+
+        //New search bar. The intention is for the user to be able to search titles from an API. 
+        //Factors to consider when searching should be case sensitivity, what they can use to search for a book
+        // (title, author, maybe publisher or publication date (REVIEW API CONTENTS))
+        //Search bar still in progress
         <SearchBar
           placeholder = "Search"
         // onChangeText={this.updateSearch}
         // value={search}
           />
+
+        //Button still in progress (size modification and functionality needed (advanced))
           <Button
             onPress={() => {
               console.log('tapped')
             }}
             title="Enter"
+            
           />
       </ThemedView>
       
@@ -81,6 +102,8 @@ export default function HomeScreen() {
   );
 }
 
+
+//Styles for views, helps created a consistent theme
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
