@@ -12,7 +12,7 @@ export async function getDb(): Promise<SQLite.SQLiteDatabase> {
 
 async function initDatabase(db: SQLite.SQLiteDatabase) {
     await db.execAsync(
-        `CREATE TABLE IF NOT EXISTS Users (
+        `CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY NOT NULL,
         username TEXT NOT NULL,
         password TEXT NOT NULL
