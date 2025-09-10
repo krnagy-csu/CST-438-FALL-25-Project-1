@@ -37,14 +37,14 @@ export default function HomeScreen() {
         
       }>
 
-      //New view, including a text box, formatted to the style described at the bottom of this file
+      {/* //New view, including a text box, formatted to the style described at the bottom of this file */}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Discover countless titles</ThemedText>
         {/* //<HelloWave /> */}
       </ThemedView>
 
-      //      //
-      //New view which includes another text box, a search bar, and a button
+
+      {/* //New view which includes another text box, a search bar, and a button */}
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Browse through our library</ThemedText>
         {/* <ThemedText> */}
@@ -61,26 +61,30 @@ export default function HomeScreen() {
           
         {/* </ThemedText> */}
 
-        //New search bar. The intention is for the user to be able to search titles from an API. 
+        {/* //New search bar. The intention is for the user to be able to search titles from an API. 
         //Factors to consider when searching should be case sensitivity, what they can use to search for a book
         // (title, author, maybe publisher or publication date (REVIEW API CONTENTS))
-        //Search bar still in progress
+        //Search bar still in progress */}
         <SearchBar
           placeholder = "Search"
         // onChangeText={this.updateSearch}
         // value={search}
           />
 
-        //Button still in progress (size modification and functionality needed (advanced))
-          <Button
-            onPress={() => {
-              console.log('tapped')
-            }}
-            title="Enter"
+        {/* //Button still in progress (size modification and functionality needed (advanced)) */}
+          <View style={styles.fitToText}>
+            <Button
+                // style = {{buttoncolor:'red'}}
+                onPress={() => {
+                  console.log('tapped')
+                }}
+                color="#346da3a7"
+                title="Enter"
+                
+              />
+          </View>
             
-          />
       </ThemedView>
-      
       {/* _________________________________________________________ */}
       {/* <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>
@@ -112,7 +116,15 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     gap: 2,
-    marginBottom: 8,
+    // marginBottom: 8,
+    marginLeft: -30,
+    marginBottom: '100%',
+    width: '200%',
+    height: '100%',
+    // lowering the transparency creates the PERFECT effect that
+    // makes this color appealing in both light and dark mode
+    backgroundColor: "#41928d49",
+    
   },
   otterLogo: {
     height: 400,
@@ -121,10 +133,14 @@ const styles = StyleSheet.create({
     left: -80,
     position: 'absolute',
   },
-  buttonContainer:{
-    margin:20,
-    flex: 1,
+  // buttonContainer:{
+  //   margin:20,
+  //   flex: 1,
+  //   justifyContent: 'space-between',
+  //   flexDirection:'row',
+  // },
+  fitToText: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    flexDirection:'row'
-  }
+  },
 });
