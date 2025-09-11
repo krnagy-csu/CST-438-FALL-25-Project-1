@@ -2,6 +2,10 @@ import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 
+// Note for gabe: this page ideally includes authentication, and acts
+// as a check to see if the user is logged in, as should every page except log in.
+// if not authenticated, route user to login.
+
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';

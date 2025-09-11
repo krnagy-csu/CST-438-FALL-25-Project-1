@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import { Text, Button, TextInput, View, ScrollView, StyleSheet } from "react-native";
-import insertUser from "@/components/dbComponents/insertUser";
+// import insertUser from "@/components/dbComponents/insertUser";
 import { getDb } from "@/db/db";
+import insertUserUnique from "@/components/dbComponents/insertUserUnique";
 
 export default function dbTest() {
 
 
   async function handleInsert() {
     try {
-      await insertUser("gabe", "test");
+      await insertUserUnique("gabe", "test");
       console.log("User inserted successfully!");
 
       const db = await getDb();

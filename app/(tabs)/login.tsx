@@ -1,9 +1,14 @@
+import { getDb } from '@/db/db';
 import { useSQLiteContext } from 'expo-sqlite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 
-const loginScreen = () => {
+export default function loginScreen(){
+  const [passwordValue, setPasswordValue] = useState('');
+  const [usernameValue, setuserNameValue] = useState('');
+  const router = useRouter();
 
   return (
     <View
@@ -20,18 +25,25 @@ const loginScreen = () => {
       <TextInput 
         style={styles.textinput}
         placeholder='Username'
+        onChangeText={setuserNameValue}
+
       ></TextInput>
+
     <TextInput 
         style={styles.textinput}
+        secureTextEntry={true}
         placeholder='Password'
+        onChangeText={setPasswordValue}
       ></TextInput> 
 
     <Button 
-    title='Submit'></Button>   
+    title='Submit'
+    onPress={() => authenticate(usernameValue, passwordValue)}></Button>   
 
     <Text>Don't have an account?</Text>
     <Button
-    title = 'Register'></Button>
+    title = 'Register'
+    onPress={() => router.push('/register')}></Button>
     </View>
   );
 };
@@ -45,4 +57,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default loginScreen;
+async function authenticate(username: string, password: string){
+  const db = await getDb();
+  const rows = await db.getAllAsync(`SELECT * FROM users WHERE users.username=? && users.password =?`, username, password);
+  console.log(rows);
+}
+
+
+

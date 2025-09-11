@@ -1,4 +1,3 @@
-import insertUser from "@/components/dbComponents/insertUser";
 import { getDb } from "@/db/db";
 
 jest.mock("@/db/db", () => ({
@@ -15,6 +14,3 @@ test("getDb returns a db object", async () => {
   expect(typeof db.execAsync).toBe("function");
 });
 
-// test("insertUser successfully inserts", async () => {
-
-// });
