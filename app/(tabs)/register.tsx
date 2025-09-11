@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 import {useForm, SubmitHandler} from "react-hook-form";
-import { text } from 'drizzle-orm/gel-core';
 import insertUserUnique from '@/components/dbComponents/insertUserUnique';
 var username = "";
 var password = "";
