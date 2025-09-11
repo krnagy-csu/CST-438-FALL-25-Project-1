@@ -1,79 +1,48 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-import { Text, View } from 'react-native';
+import { useSQLiteContext } from 'expo-sqlite';
+import React, { useEffect } from 'react';
+import {Text, View, Button, TextInput} from 'react-native';
+import { StyleSheet } from 'react-native';
 
+const loginScreen = () => {
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#94d0f1ff', dark: '#117572ff' }}
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+      }}>
 
-      headerImage={
-        <Image
-          source={require('@/assets/images/otter.png')}
-          style={styles.otterLogo}
-        />
-      }>
+      <Text>Welcome to BookMark!</Text>
+      <Text>Enter your details to log in.</Text>
 
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <TextInput 
+        style={styles.textinput}
+        placeholder='Username'
+      ></TextInput>
+    <TextInput 
+        style={styles.textinput}
+        placeholder='Password'
+      ></TextInput> 
+
+    <Button 
+    title='Submit'></Button>   
+
+    <Text>Don't have an account?</Text>
+    <Button
+    title = 'Register'></Button>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 2,
-    marginBottom: 8,
-  },
-  otterLogo: {
-    height: 400,
-    width: 300,
-    bottom: -130,
-    left: -80,
-    position: 'absolute',
+  textinput: {
+    height: 30,
+    margin: 10,
+    borderWidth: 1,
+    padding: 15,
   },
 });
+
+export default loginScreen;
