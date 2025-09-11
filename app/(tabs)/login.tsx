@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect } from 'react';
->>>>>>> 6726e27db3137955fd59d2991fc4ddd6f444b6f7
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 
 const loginScreen = () => {
-<<<<<<< HEAD
-=======
 
->>>>>>> 6726e27db3137955fd59d2991fc4ddd6f444b6f7
   return (
     <View
       style={{
