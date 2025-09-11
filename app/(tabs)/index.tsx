@@ -25,7 +25,6 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-<<<<<<< HEAD
         <ThemedText type="subtitle">  Browse through our library</ThemedText>
 
         {/* //New search bar. The intention is for the user to be able to search titles from an API. 
@@ -56,21 +55,6 @@ export default function HomeScreen() {
               />
           </View>
             
-=======
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
->>>>>>> 251cbc3ba921b044cea93d087fb95c1c87a404c0
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>

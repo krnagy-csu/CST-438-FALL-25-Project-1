@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
-
 const loginScreen = () => {
   return (
     <View
