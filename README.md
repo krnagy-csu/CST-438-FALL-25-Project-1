@@ -20,6 +20,7 @@ It's main features will include:
 Ideas are still being floated around at this stage of development, 
 and a timeline for project milestones to be made each week is in the works. The deadline for this project is September 28th, 2025.
 
+
 08/28/2025
 So far we have decided to create a GoodReads clone, where we would allow users to search for books, mark which ones they've read, rate them, save books, and more. 
 1.
@@ -31,4 +32,8 @@ So far we have decided to create a GoodReads clone, where we would allow users t
     -Once logged in, their username will be displayed in the top right corner. (This could be interactive and take them to their profile (see statement ______))
 2.
 -
+
+
+
 Note: The videos Dr. C released for expo emulation seem a little outdated. To emulate this on your local machine, navigate to the project folder in terminal and run "npx expo start".
+
