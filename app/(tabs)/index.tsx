@@ -50,18 +50,6 @@ export default function HomeScreen(){
       {/* //New view which includes another text box, a search bar, and a button */}
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">  Browse through our library</ThemedText>
-        {/* <ThemedText> */}
-          {/* Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '} */}
-          {/* <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools. */}
-        {/* </ThemedText> */}
 
         {/* //New search bar. The intention is for the user to be able to search titles from an API. 
         //Factors to consider when searching should be case sensitivity, what they can use to search for a book
