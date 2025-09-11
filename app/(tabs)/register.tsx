@@ -2,6 +2,11 @@ import React from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 import {useForm, SubmitHandler} from "react-hook-form";
+import insertUserUnique from '@/components/dbComponents/insertUserUnique';
+import checkMatch from '@/components/registrationComponents/registrationComponents';
+var username = "";
+var password = "";
+var passwordConfirm = "";
 const registerScreen = () => {
     type Inputs ={
         username: string
@@ -27,23 +32,28 @@ const registerScreen = () => {
       <Text>Welcome to BookMark!</Text>
       <Text>Please enter your new account's details.</Text>
     <form onSubmit={handleSubmit(onSubmit)}>
-        <input 
-        defaultValue='Username'
-        {...register("username")}
-        ></input>
+        <TextInput
+        placeholder='Username'
+        style = {styles.textinput}
+        onChangeText={updateUsername}
+        ></TextInput>
         <br></br>
-        <input 
-        defaultValue='Password'
-        {...register("password")}
-        ></input>
+        <TextInput
+        placeholder='Password'
+        style = {styles.textinput}
+        onChangeText={updatePassword}
+        ></TextInput>
         <br></br>
-        <input 
-        defaultValue='Confirm Password'
-        {...register("passwordConfirm")}
-        ></input>
+        <TextInput
+        placeholder='Confirm Password'
+        style = {styles.textinput}
+        onChangeText={updateConfirmPassword}
+        ></TextInput>
         <br></br>
         
-        <button type="submit">Submit</button>   
+        <Button
+        title = 'submit Registration'
+        onPress={sendRegistration}></Button>
         
     </form>
     </View>
@@ -58,5 +68,28 @@ const styles = StyleSheet.create({
     padding: 15,
   },
 });
+const sendRegistration = async() =>{
+  //check if passwords match; check if exists in DB; if both good, send it
+  alert("Username: "+username+"; Password:"+password);
+  if (!checkMatch(password,passwordConfirm)){
+    alert("Passwords do not match!");
+    return;
+  } else {
+    insertUserUnique(username,password);
+  }
+
+}
+function updateUsername(newText:string){
+  username = newText;
+  return newText;
+}
+function updatePassword(newText:string){
+  password = newText;
+  return newText;
+}
+function updateConfirmPassword(newText:string){
+  passwordConfirm = newText;
+  return newText;
+}
 
 export default registerScreen;
