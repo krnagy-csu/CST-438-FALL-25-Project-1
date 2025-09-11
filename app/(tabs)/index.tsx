@@ -1,6 +1,6 @@
 /*
   Worked on by Liliana Saavedra
-  Recources:https://reactnative.dev/docs/handling-touches
+  Recources: https://reactnative.dev/docs/handling-touches
             https://reactnative.dev/docs/textinput
             https://reactnative.dev/docs/colors
 */
@@ -16,6 +16,7 @@ import React from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+
 // import { SearchBar } from 'react-native-screens';
 // import { Button } from '@react-navigation/elements';
 
@@ -48,7 +49,7 @@ export default function HomeScreen(){
 
       {/* //New view which includes another text box, a search bar, and a button */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Browse through our library</ThemedText>
+        <ThemedText type="subtitle">  Browse through our library</ThemedText>
         {/* <ThemedText> */}
           {/* Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '} */}
@@ -75,6 +76,7 @@ export default function HomeScreen(){
             // value={number}
             placeholder="Search"
             keyboardType="numeric"
+            // autoCorrect;
           />
 
           {/* //Button still in progress (size modification and functionality needed (advanced)) */}
@@ -118,6 +120,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    // fontFamily: 'Serif',
   },
   stepContainer: {
     gap: 2,
@@ -147,11 +150,17 @@ const styles = StyleSheet.create({
   fitToText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    margin: 5,
+    padding: 10,
   },
   searchBox:{
     height:40,
     margin:12,
+    
+    // marginRight:-500,
     borderWidth:1,
     padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
