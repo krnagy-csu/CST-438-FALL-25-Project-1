@@ -1,6 +1,6 @@
 /*
   Worked on by Liliana Saavedra
-  Recources:https://reactnative.dev/docs/handling-touches
+  Recources: https://reactnative.dev/docs/handling-touches
             https://reactnative.dev/docs/textinput
             https://reactnative.dev/docs/colors
 */
