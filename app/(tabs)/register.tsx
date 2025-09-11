@@ -3,6 +3,7 @@ import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 import {useForm, SubmitHandler} from "react-hook-form";
 import insertUserUnique from '@/components/dbComponents/insertUserUnique';
+import checkMatch from '@/components/registrationComponents/registrationComponents';
 var username = "";
 var password = "";
 var passwordConfirm = "";
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
 const sendRegistration = async() =>{
   //check if passwords match; check if exists in DB; if both good, send it
   alert("Username: "+username+"; Password:"+password);
-  if (password!= passwordConfirm){
+  if (!checkMatch(password,passwordConfirm)){
     alert("Passwords do not match!");
     return;
   } else {
@@ -80,11 +81,15 @@ const sendRegistration = async() =>{
 }
 function updateUsername(newText:string){
   username = newText;
+  return newText;
 }
 function updatePassword(newText:string){
   password = newText;
+  return newText;
 }
 function updateConfirmPassword(newText:string){
   passwordConfirm = newText;
+  return newText;
 }
+
 export default registerScreen;
