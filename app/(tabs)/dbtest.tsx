@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import { Text, Button, TextInput, View, ScrollView, StyleSheet } from "react-native";
-// import type { User } from "@/components/types";
 import insertUser from "@/components/dbComponents/insertUser";
 import { getDb } from "@/db/db";
 
 export default function dbTest() {
-  const [username, setUsername] = useState("");
-//   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+
 
   async function handleInsert() {
     try {

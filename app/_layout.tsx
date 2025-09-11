@@ -3,7 +3,6 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Suspense } from 'react';
-import { SQLiteProvider, openDatabaseSync } from 'expo-sqlite';
 import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -24,8 +23,6 @@ export default function RootLayout() {
 
   return (
     <Suspense>
-
-
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -33,7 +30,6 @@ export default function RootLayout() {
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
-
     </Suspense>
   );
 }
