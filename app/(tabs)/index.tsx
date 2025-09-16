@@ -5,6 +5,12 @@ import{Alert, Button} from 'react-native';
 //for search bar
 import {TextInput, SafeAreaView } from 'react-native';
 import React from 'react';
+=
+
+// Note for gabe: this page ideally includes authentication, and acts
+// as a check to see if the user is logged in, as should every page except log in.
+// if not authenticated, route user to login.
+
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
