@@ -1,10 +1,7 @@
-import { useSQLiteContext } from 'expo-sqlite';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
-
 const loginScreen = () => {
-
   return (
     <View
       style={{

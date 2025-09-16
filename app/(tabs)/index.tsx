@@ -1,31 +1,70 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
-
-
+import{Alert, Button} from 'react-native';
+//for search bar
+import {TextInput, SafeAreaView } from 'react-native';
+import React from 'react';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+const textEx = () => {
+  const[text, onChangeText] = React.useState('Ehhhh');
+  const [number, onChangeNumber] = React.useState('');
+}
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#94d0f1ff', dark: '#117572ff' }}
-
+      //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)
+      headerBackgroundColor={{ light: '#bee8ffff', dark: '#437996ff' }}
+      //Image inside the banner, featuring the lovely Monte Ray
       headerImage={
         <Image
           source={require('@/assets/images/otter.png')}
+          //formatted to the style described at the bottom of this file
           style={styles.otterLogo}
         />
       }>
-
+      {/* //New view, including a text box, formatted to the style described at the bottom of this file */}
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">Discover countless titles</ThemedText>
+        {/* <HelloWave /> */}
       </ThemedView>
+      {/* //New view which includes another text box, a search bar, and a button */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">  Browse through our library</ThemedText>
+
+        {/* //New search bar. The intention is for the user to be able to search titles from an API. 
+        //Factors to consider when searching should be case sensitivity, what they can use to search for a book
+        // (title, author, maybe publisher or publication date (REVIEW API CONTENTS))
+        //Search bar still in progress */}
+
+          {/* //Search Bar 
+          //DEBUGGING NEEDED; ADD SEARCH FUNCTIONALITY */}
+          <TextInput
+            style={styles.searchBox}
+            // onChangeText={onChangeNumber}
+            // value={number}
+            placeholder="Search"
+            keyboardType="numeric"
+            // autoCorrect;
+          />
+
+          {/* //Button still in progress (size modification and functionality needed (advanced)) */}
+          <View style={styles.fitToText}>
+            <Button
+                // style = {{buttoncolor:'red'}}
+                onPress={() => {
+                  console.log('tapped')
+                }}
+                color="#346da3a7"
+                title="Enter"
+              />
+          </View>
+
+       {/* <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '}
@@ -37,7 +76,7 @@ export default function HomeScreen() {
             })}
           </ThemedText>{' '}
           to open developer tools.
-        </ThemedText>
+        </ThemedText>  
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>
@@ -53,7 +92,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
           <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        </ThemedText> */}
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -67,7 +106,14 @@ const styles = StyleSheet.create({
   },
   stepContainer: {
     gap: 2,
-    marginBottom: 8,
+    marginLeft: -30,
+    marginBottom: '100%',
+    width: '200%',
+    height: '100%',
+    // lowering the transparency creates the PERFECT effect that
+    // makes this color appealing in both light and dark mode
+    backgroundColor: "#41928d49",
+    
   },
   otterLogo: {
     height: 400,
@@ -75,5 +121,21 @@ const styles = StyleSheet.create({
     bottom: -130,
     left: -80,
     position: 'absolute',
+  },
+  fitToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 5,
+    padding: 10,
+  },
+  searchBox:{
+    height:40,
+    margin:12,
+    
+    // marginRight:-500,
+    borderWidth:1,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
