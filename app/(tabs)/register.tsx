@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import {useForm, SubmitHandler} from "react-hook-form";
 import insertUserUnique from '@/components/dbComponents/insertUserUnique';
 import checkMatch from '@/components/registrationComponents/registrationComponents';
+import { router } from 'expo-router';
 var username = "";
 var password = "";
 var passwordConfirm = "";
@@ -53,7 +54,7 @@ const registerScreen = () => {
         
         <Button
         title = 'submit Registration'
-        onPress={sendRegistration}></Button>
+        onPress = {async () => { await sendRegistration(), router.push("/login") }} ></Button>
         
     </form>
     </View>
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
 });
+
 const sendRegistration = async() =>{
   //check if passwords match; check if exists in DB; if both good, send it
   alert("Username: "+username+"; Password:"+password);
