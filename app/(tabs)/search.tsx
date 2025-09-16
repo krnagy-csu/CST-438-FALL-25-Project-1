@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Text, View, Button, Image, TextInput} from 'react-native';
+import {Text, View, Button, Image, ScrollView, TextInput, TouchableOpacity} from 'react-native';
 import { StyleSheet } from 'react-native';
 
 interface Book {
@@ -16,14 +16,14 @@ const searchPage = () => {
   const fetchAPI = async () => {
     try {
         // url now includes the user input query instead of manually inserting a book title
-      const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(searchQuery)}&limit=10`;
-    //   console.log('Search URL:', url);
+      const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(searchQuery)}&limit=5`;
+      console.log('Search URL:', url);
     //   console.log('Search Query:', searchQuery);
       
       const response = await fetch(url);
       const data = await response.json();
       
-    //   console.log('API Response:', data);
+      console.log('API Response:', data);
       setBooks(data.docs || []);
     } catch (error) {
       console.error('Error:', error);
@@ -31,7 +31,7 @@ const searchPage = () => {
     }
   };
   return (
-    <View style={{padding: 20, flex: 1, backgroundColor: 'white'}}>
+    <ScrollView style={{flex: 1, backgroundColor: 'white'}} contentContainerStyle={{padding: 20}}>
       <Text style={styles.title}>Search for a book</Text>
       <Text style={styles.subTitle}>Enter title, ISBN, or author</Text>
       
@@ -51,33 +51,44 @@ const searchPage = () => {
         </View>
     </View>
 
-      {/* <Text style={styles.subTitle}>Found {books.length} books:</Text> */}
+      {/* <Text style={{fontSize: 15, textAlign: 'center', padding: 10}}>Found {books.length} books:</Text> */}
 
       {books.map((book, index) => (
-        <View key={index}>
-          {book.cover_i && (
-            <Image 
-              source={{ uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` }}
-              style={{width: 60, height: 90}}
-            />
-          )}
-          <Text>{book.title}</Text>
-          <Text>{book.author_name ? book.author_name[0] : 'Unknown Author'}</Text>
+        <View key={index} style={styles.results}>
+           {/* added some logic to use a default cover image if the api doesn't provide a cover */}
+          <Image 
+            source={
+              book.cover_i 
+                ? { uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` }
+                : require('../../assets/images/default_cover.png')
+            }
+            style={{width: 120, height: 200}}
+          />
+          <View>
+            <Text style={styles.bookTitle}>{book.title}</Text>
+            <Text style={{textTransform: 'capitalize', paddingBottom:15}}>{book.author_name ? book.author_name[0] : 'Unknown Author'}</Text>
+            <TouchableOpacity 
+                style={styles.favoriteButton}
+                // onPress={() => addToFavorites(book)}
+            >
+              <Text style={styles.favoriteButtonText}>Add to Favorites</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30,
+    fontSize: 50,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
   },
   subTitle: {
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'center',
     marginBottom: 30,
   },
@@ -102,5 +113,39 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 16,
   },
+  results: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginBottom: 10,
+    gap: 10,
+    padding: 15,
+    borderWidth: 2.5,
+    borderColor: "gray",
+    width: 550,
+  },
+  stack: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  bookTitle: {
+    fontSize: 20,
+    paddingBottom: 10,
+    textTransform: 'capitalize',
+    flexShrink: 1,
+  },
+  favoriteButton: {
+    backgroundColor: 'rgb(11, 18, 69)',
+    borderRadius: 3,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    width: 150
+  },
+  favoriteButtonText: {
+    color: 'white',
+    fontSize: 16,
+  }
 });
 export default searchPage;
