@@ -3,7 +3,7 @@ import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect, useState } from 'react';
 import {Text, View, Button, TextInput, ToastAndroid} from 'react-native';
 import { StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 
 
 export default function loginScreen(){
@@ -21,7 +21,7 @@ export default function loginScreen(){
         alignItems: 'center',
         backgroundColor: 'white',
       }}>
-
+ 
       <Text>Welcome to BookMark!</Text>
       <Text>Enter your details to log in.</Text>
 
@@ -54,9 +54,21 @@ export default function loginScreen(){
 
 async function authenticate(username: string, password: string){
   try{
+    // I know this has unknown type errors, it's because of the async stuff. please dont touch !
     const db = await getDb();
-    const rows = await db.getAllAsync(`SELECT * FROM users WHERE users.username=? && users.password=?`, username, password);
+    const rows = await db.getAllAsync(`SELECT * FROM users`);
+    for (const row of rows){
+        // console.log(row.password);
+        // console.log(row.username);
+        if(row.password == password && row.username == username){
+          router.push('/');
+        }
+        else{
+          alert("login credentials not found!");
+        }
+    }
     console.log("authenticate rows: ", rows);
+    
   }
   catch(err){
     console.log(err);

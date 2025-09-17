@@ -20,6 +20,7 @@ const textEx = () => {
   const[text, onChangeText] = React.useState('Ehhhh');
   const [number, onChangeNumber] = React.useState('');
 }
+
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
