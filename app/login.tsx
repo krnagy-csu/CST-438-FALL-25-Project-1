@@ -2,6 +2,8 @@ import { getDb } from '@/db/db';
 import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect, useState } from 'react';
 import {Text, View, Button, TextInput, ToastAndroid} from 'react-native';
+import React, { useEffect } from 'react';
+import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
 import { router, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,6 +16,7 @@ export default function loginScreen(){
   const router = useRouter();
 
 
+const loginScreen = () => {
   return (
     <View
       style={{
