@@ -5,7 +5,7 @@ import {Text, View, Button, TextInput, ToastAndroid} from 'react-native';
 import React, { useEffect } from 'react';
 import {Text, View, Button, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
-import { router, useRouter } from 'expo-router';
+import { router, router, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function loginScreen(){
@@ -15,8 +15,6 @@ export default function loginScreen(){
   // console.log(usernameValue);
   const router = useRouter();
 
-
-const loginScreen = () => {
   return (
     <View
       style={{
@@ -60,23 +58,8 @@ async function handleLogin(username: string, password: string){
   try{
     // I know this has unknown type errors, it's because of the async stuff. please dont touch !
     const db = await getDb();
-    const rows = await db.getAllAsync(`SELECT * FROM users`);
-    let userFound = false;
-
-    for (const row of rows){
-        // console.log(row.password);
-        // console.log(row.username);
-        if(row.password == password && row.username == username){
-          // Set session token in AsyncStorage
-          await AsyncStorage.setItem('userToken', 'loggedIn');
-          console.log("user authenticated");
-          router.push('/');
-          userFound = true;
-        }
-    }
-    if(!userFound){
-      alert("login credentials not found!");
-    }
+    const rows = await db.getAllAsync(`SELECT * FROM users WHERE users.username=? && users.password=?`, username, password);
+    console.log("authenticate rows: ", rows);
   }
   catch(err){
     console.log(err);
