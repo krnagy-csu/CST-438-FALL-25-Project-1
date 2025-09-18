@@ -56,8 +56,9 @@ async function handleLogin(username: string, password: string){
   try{
     // I know this has unknown type errors, it's because of the async stuff. please dont touch !
     const db = await getDb();
-    console.log("authenticate rows: ", rows);
     const rows = await db.getAllAsync(`SELECT * FROM users`);
+    console.log("authenticate rows: ", rows);
+
     let userFound = false;
 
     for (const row of rows){
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
 });
 
 
-}
+
 
 
 
