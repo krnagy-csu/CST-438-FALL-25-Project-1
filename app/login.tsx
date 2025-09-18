@@ -1,9 +1,9 @@
 import { getDb } from '@/db/db';
 import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect, useState } from 'react';
-import {Text, View, Button, TextInput, ToastAndroid} from 'react-native';
+import { Text, View, Button, TextInput, ToastAndroid} from 'react-native';
 import { StyleSheet } from 'react-native';
-import { router, router, useRouter } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function loginScreen(){
@@ -56,7 +56,6 @@ async function handleLogin(username: string, password: string){
   try{
     // I know this has unknown type errors, it's because of the async stuff. please dont touch !
     const db = await getDb();
-    const rows = await db.getAllAsync(`SELECT * FROM users WHERE users.username=? && users.password=?`, username, password);
     console.log("authenticate rows: ", rows);
     const rows = await db.getAllAsync(`SELECT * FROM users`);
     let userFound = false;
