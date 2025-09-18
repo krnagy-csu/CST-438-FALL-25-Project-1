@@ -34,6 +34,7 @@ const profilePage =() => {
                 <View style={{flex:2}}>
                 <Text id="userWelcomeMessage">Welcome back, Username! </Text>
                 <Text>{'\n'}</Text>
+                <Text>Profile picture goes here eventually</Text>
                 <Text>{'\n'}{'\n'}</Text>
                 
                 <Text id="MOTD">Eventual message of the day goes here!</Text>
