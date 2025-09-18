@@ -15,6 +15,27 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import AuthCheck from '@/components/registrationComponents/authCheck';
+import { Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { router } from 'expo-router';
+
+useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const userToken = await AsyncStorage.getItem('userToken');
+        if (userToken !== 'loggedIn') {
+          router.replace('/login');
+        }
+      } catch (error) {
+        console.error('Error checking authentication:', error);
+        router.replace('/login');
+      }
+    };
+
+    checkAuth();
+  }, []);
+
 
 const textEx = () => {
   const[text, onChangeText] = React.useState('Ehhhh');
@@ -101,7 +122,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText> */}
       </ThemedView>
-    </ParallaxScrollView>
+    </ParallaxScrollView>    
   );
 }
 

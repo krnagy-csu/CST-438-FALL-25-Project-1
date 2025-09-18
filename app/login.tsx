@@ -4,14 +4,15 @@ import React, { useEffect, useState } from 'react';
 import {Text, View, Button, TextInput, ToastAndroid} from 'react-native';
 import { StyleSheet } from 'react-native';
 import { router, useRouter } from 'expo-router';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function loginScreen(){
   const [passwordValue, setPasswordValue] = useState('');
   const [usernameValue, setuserNameValue] = useState('');
-  console.log(passwordValue);
-  console.log(usernameValue);
+  // console.log(passwordValue);
+  // console.log(usernameValue);
   const router = useRouter();
+
 
   return (
     <View
@@ -41,7 +42,7 @@ export default function loginScreen(){
 
       <Button 
       title='Submit'
-      onPress={() => authenticate(usernameValue, passwordValue)}></Button>   
+      onPress={() => handleLogin(usernameValue, passwordValue)}></Button>   
 
       <Text>Don't have an account?</Text>
       <Button
@@ -52,27 +53,30 @@ export default function loginScreen(){
   );
 };
 
-async function authenticate(username: string, password: string){
+async function handleLogin(username: string, password: string){
   try{
     // I know this has unknown type errors, it's because of the async stuff. please dont touch !
     const db = await getDb();
     const rows = await db.getAllAsync(`SELECT * FROM users`);
+    let userFound = false;
+
     for (const row of rows){
         // console.log(row.password);
         // console.log(row.username);
         if(row.password == password && row.username == username){
+          // Set session token in AsyncStorage
+          await AsyncStorage.setItem('userToken', 'loggedIn');
+          console.log("user authenticated");
           router.push('/');
-        }
-        else{
-          alert("login credentials not found!");
+          userFound = true;
         }
     }
-    console.log("authenticate rows: ", rows);
-    
+    if(!userFound){
+      alert("login credentials not found!");
+    }
   }
   catch(err){
     console.log(err);
-    alert("login credentials not found!");
   }
 }
 
