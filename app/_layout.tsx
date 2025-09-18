@@ -23,6 +23,7 @@ export default function RootLayout() {
   return (
     <Suspense>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <AuthCheck>
         <Stack>
           <Stack.Screen
             name="login"
@@ -37,12 +38,11 @@ export default function RootLayout() {
             }}
           />
 
-          <AuthCheck>
             {/* Tab navigation */}
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
-          </AuthCheck>
         </Stack>
+          </AuthCheck>
         <StatusBar style="auto" />
       </ThemeProvider>
     </Suspense>
