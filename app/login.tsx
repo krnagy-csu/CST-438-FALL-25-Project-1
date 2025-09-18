@@ -60,6 +60,23 @@ async function handleLogin(username: string, password: string){
     const db = await getDb();
     const rows = await db.getAllAsync(`SELECT * FROM users WHERE users.username=? && users.password=?`, username, password);
     console.log("authenticate rows: ", rows);
+    const rows = await db.getAllAsync(`SELECT * FROM users`);
+    let userFound = false;
+
+    for (const row of rows){
+        // console.log(row.password);
+        // console.log(row.username);
+        if(row.password == password && row.username == username){
+          // Set session token in AsyncStorage
+          await AsyncStorage.setItem('userToken', 'loggedIn');
+          console.log("user authenticated");
+          router.push('/');
+          userFound = true;
+        }
+    }
+    if(!userFound){
+      alert("login credentials not found!");
+    }
   }
   catch(err){
     console.log(err);
