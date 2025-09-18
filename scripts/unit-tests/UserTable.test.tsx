@@ -1,4 +1,3 @@
-import insertUserUnique from "@/components/dbComponents/insertUserUnique";
 import { getDb } from "@/db/db";
 
 jest.mock("@/db/db", () => ({
@@ -9,6 +8,9 @@ jest.mock("@/db/db", () => ({
   })),
 }));
 
-test("insert into usertable", async () => {
-const db = await getDb();
+test("getDb returns a db object", async () => {
+  const db = await getDb();
+  expect(db).not.toBeNull();
+  expect(typeof db.execAsync).toBe("function");
 });
+
