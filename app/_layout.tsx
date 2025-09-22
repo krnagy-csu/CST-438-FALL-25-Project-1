@@ -24,24 +24,24 @@ export default function RootLayout() {
     <Suspense>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <AuthCheck>
-        <Stack>
-          <Stack.Screen
-            name="login"
-            options={{
-              headerShown: false
-            }}
-          />
-          <Stack.Screen
-            name="register"
-            options={{
-              headerShown: false
-            }}
-          />
+          <Stack>
+            <Stack.Screen
+              name="login"
+              options={{
+                headerShown: false
+              }}
+            />
+            <Stack.Screen
+              name="register"
+              options={{
+                headerShown: false
+              }}
+            />
 
-            {/* Tab navigation */}
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-        </Stack>
+              {/* Tab navigation */}
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+          </Stack>
           </AuthCheck>
         <StatusBar style="auto" />
       </ThemeProvider>

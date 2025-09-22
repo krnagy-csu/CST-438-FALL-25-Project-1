@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
-import{Alert, Button} from 'react-native';
+import  { Alert, Button} from 'react-native';
 //for search bar
 import {TextInput, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -24,8 +24,10 @@ import { router } from 'expo-router';
 useEffect(() => {
     const checkAuth = async () => {
       try {
-        const userToken = await AsyncStorage.getItem('userToken');
-        if (userToken !== 'loggedIn') {
+        const userToken = "notloggedin"; // no idea why this fixes session token, but dont touch it
+        userToken = await AsyncStorage.getItem('userToken');
+        console.log(userToken);
+        if (userToken != 'loggedIn') {
           router.replace('/login');
         }
       } catch (error) {
@@ -44,6 +46,7 @@ const textEx = () => {
 }
 
 export default function HomeScreen() {
+  console.log(AsyncStorage.getItem('userToken'));
   return (
     <ParallaxScrollView
       //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)

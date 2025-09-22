@@ -63,7 +63,6 @@ async function handleLogin(username: string, password: string){
         // console.log(row.password);
         // console.log(row.username);
         if(row.password == password && row.username == username){
-          // Set session token in AsyncStorage
           await AsyncStorage.setItem('userToken', 'loggedIn');
           console.log("user authenticated");
           router.push('/');
