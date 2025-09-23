@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, Button, TextInput, ToastAndroid} from 'react-native';
 import { StyleSheet } from 'react-native';
 import { router, useRouter } from 'expo-router';
-import { insertFavorite, insertReview } from '@/components/dbComponents'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {insertFavorite, insertReview} from '@/components/dbComponents/insertFavorite';
 
 export default function bookInfo(){
   const [reviewValue, setReviewValue] = useState('');
