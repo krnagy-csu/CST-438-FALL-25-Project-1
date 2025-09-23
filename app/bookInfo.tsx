@@ -1,7 +1,7 @@
 import { getDb } from '@/db/db';
 import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect, useState } from 'react';
-import { Text, View, Button, TextInput, ToastAndroid} from 'react-native';
+import { Text, View, Button, TextInput, ToastAndroid } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { router, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,8 +9,9 @@ import {insertFavorite, insertReview} from '@/components/dbComponents/insertFavo
 
 export default function bookInfo(){
   const [reviewValue, setReviewValue] = useState('');
-  // console.log(passwordValue);
-  // console.log(usernameValue);
+  const bookTitle = AsyncStorage.getItem("bookTitle");
+  // const bookAuthor = AsyncStorage.getItem("bookAuthor");
+  // const bookImage = AsyncStorage.getItem("bookImage");
   const router = useRouter();
 
   return (
@@ -21,6 +22,17 @@ export default function bookInfo(){
         alignItems: 'center',
         backgroundColor: 'white',
       }}>
+
+      <Text>
+        {bookTitle}
+      </Text>
+
+      {/* <Image
+      source={{bookImage}}></Image>
+
+      <Text>
+        {"by " + bookAuthor}
+      </Text> */}
 
       <TextInput 
         style={styles.textinput}
@@ -34,13 +46,12 @@ export default function bookInfo(){
 
       <Button 
       title='Add to Favorites'
-      onPress={() => insertFavorite()}></Button>   
+      onPress={() => insertFavorite(bookTitle, bookAuthor, bookImage)}></Button>   
       {/* idea: upon inserting a favorite, create new book and insert into Book Table. 
       Then insert a new compound value of Book and User into favorites table
       This way both tables are only populated as needed.
       Book contains info from API call (needs to be passed into this tab!)
       */}
-
       </View>
   );
 };

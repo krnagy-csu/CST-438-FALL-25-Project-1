@@ -26,7 +26,7 @@ async function initDatabase(db: SQLite.SQLiteDatabase) {
         bookId INTEGER PRIMARY KEY NOT NULL,
         title TEXT NOT NULL,
         author TEXT NOT NULL,
-        isbn TEXT NOT NULL
+        imageURL TEXT NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS user_favorites (

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import {Text, View, Button, Image, TextInput} from 'react-native';
+import {Text, View, Button, Image, TextInput, Pressable} from 'react-native';
 import { StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 interface Book {
   title?: string;
@@ -13,6 +15,12 @@ const searchPage = () => {
   const [books, setBooks] = useState<Book[]>([]);
   //added a searchQuery useState
   const [searchQuery, setSearchQuery] = useState('');
+
+const saveBookTitle = () =>{
+  AsyncStorage.setItem("bookTitle", book.title);
+  // AsyncStorage.setItem("bookAuthor", book.author_name);
+  // AsyncStorage.setItem("bookImage", book.cover_i);
+}
 
   const fetchAPI = async () => {
     try {
@@ -56,21 +64,25 @@ const searchPage = () => {
 
       {books.map((book, index) => (
         <View key={index}>
-          <Link href='/bookInfo'>
+            
             {book.cover_i && (
             <Image 
               source={{ uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` }}
               style={{width: 60, height: 90}}
             />
           )}
+          <Link href='/bookInfo'>
+           <Pressable onPress={saveBookTitle}>
+              <Text>{book.title}</Text>
+           </Pressable>
           </Link>
-          <Link href='/bookInfo'>{book.title}</Link>
           <Text>{book.author_name ? book.author_name[0] : 'Unknown Author'}</Text>
         </View>
       ))}
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   title: {

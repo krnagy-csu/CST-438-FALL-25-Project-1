@@ -1,10 +1,14 @@
 import { getDb } from "@/db/db";
 import { SQLiteBindValue } from "expo-sqlite";
+import insertBook from "./insertBook";
 
-export default async function insertFavorite() {
+export default async function insertFavorite(title:SQLiteBindValue, author:SQLiteBindValue, image:SQLiteBindValue) {
     try {
         const db = await getDb();
+        insertBook(title, author, image);
+        
         await db.runAsync();
+
     }   catch (err) {
       console.error("Error inserting favorite:", err);
     }
