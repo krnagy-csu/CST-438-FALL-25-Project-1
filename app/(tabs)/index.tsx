@@ -1,9 +1,10 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
-import{Alert, Button} from 'react-native';
+import  { Alert, Button} from 'react-native';
 //for search bar
 import {TextInput, SafeAreaView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 
 
@@ -15,12 +16,37 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import AuthCheck from '@/components/registrationComponents/authCheck';
+import { Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { router } from 'expo-router';
+
+useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const userToken = "notloggedin"; // no idea why this fixes session token, but dont touch it
+        userToken = await AsyncStorage.getItem('userToken');
+        console.log(userToken);
+        if (userToken != 'loggedIn') {
+          router.replace('/login');
+        }
+      } catch (error) {
+        console.error('Error checking authentication:', error);
+        router.replace('/login');
+      }
+    };
+
+    checkAuth();
+  }, []);
+
 
 const textEx = () => {
   const[text, onChangeText] = React.useState('Ehhhh');
   const [number, onChangeNumber] = React.useState('');
 }
+
 export default function HomeScreen() {
+  console.log(AsyncStorage.getItem('userToken'));
   return (
     <ParallaxScrollView
       //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)
@@ -100,7 +126,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText> */}
       </ThemedView>
-    </ParallaxScrollView>
+    </ParallaxScrollView>    
   );
 }
 
