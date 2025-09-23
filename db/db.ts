@@ -35,6 +35,16 @@ async function initDatabase(db: SQLite.SQLiteDatabase) {
         PRIMARY KEY (userId, bookId),
         FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE,
         FOREIGN KEY (bookId) REFERENCES books(bookId) ON DELETE CASCADE
+
+        CREATE TABLE IF NOT EXISTS user_reviews (
+        reviewId INTEGER NOT NULL, 
+        userId INTEGER NOT NULL,
+        bookId INTEGER NOT NULL,
+        PRIMARY KEY (userId, bookId, reviewId),
+        FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE,
+        FOREIGN KEY (bookId) REFERENCES books(bookId) ON DELETE CASCADE,
+        reviewText TEXT NOT NULL
+        )
 );
       `
     )

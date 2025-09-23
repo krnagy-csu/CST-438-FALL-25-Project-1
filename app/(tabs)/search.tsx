@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Text, View, Button, Image, TextInput} from 'react-native';
 import { StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
 
 interface Book {
   title?: string;
@@ -55,13 +56,15 @@ const searchPage = () => {
 
       {books.map((book, index) => (
         <View key={index}>
-          {book.cover_i && (
+          <Link href='/bookInfo'>
+            {book.cover_i && (
             <Image 
               source={{ uri: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` }}
               style={{width: 60, height: 90}}
             />
           )}
-          <Text>{book.title}</Text>
+          </Link>
+          <Link href='/bookInfo'>{book.title}</Link>
           <Text>{book.author_name ? book.author_name[0] : 'Unknown Author'}</Text>
         </View>
       ))}
