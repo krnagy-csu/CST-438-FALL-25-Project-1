@@ -16,8 +16,8 @@ const searchPage = () => {
   //added a searchQuery useState
   const [searchQuery, setSearchQuery] = useState('');
 
-const saveBookTitle = () =>{
-  AsyncStorage.setItem("bookTitle", book.title);
+async function saveBookTitle(title){
+  AsyncStorage.setItem("bookTitle", title);
   // AsyncStorage.setItem("bookAuthor", book.author_name);
   // AsyncStorage.setItem("bookImage", book.cover_i);
 }
@@ -72,7 +72,7 @@ const saveBookTitle = () =>{
             />
           )}
           <Link href='/bookInfo'>
-           <Pressable onPress={saveBookTitle}>
+           <Pressable onPress={saveBookTitle(book.title)}>
               <Text>{book.title}</Text>
            </Pressable>
           </Link>
