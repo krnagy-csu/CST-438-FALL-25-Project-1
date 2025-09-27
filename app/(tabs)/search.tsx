@@ -3,9 +3,10 @@ import {Text, View, Button, Image, ScrollView, TextInput, TouchableOpacity} from
 import { StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import insertFavorite from '@/components/dbComponents/insertFavorite';
 
 
-interface Book {
+export interface Book {
   title?: string;
   author_name?: string[];
   cover_i?: number;
@@ -15,12 +16,6 @@ const searchPage = () => {
   const [books, setBooks] = useState<Book[]>([]);
   //added a searchQuery useState
   const [searchQuery, setSearchQuery] = useState('');
-
-async function saveBookTitle(title){
-  AsyncStorage.setItem("bookTitle", title);
-  // AsyncStorage.setItem("bookAuthor", book.author_name);
-  // AsyncStorage.setItem("bookImage", book.cover_i);
-}
 
   const fetchAPI = async () => {
     try {
@@ -78,7 +73,7 @@ async function saveBookTitle(title){
             <Text style={{textTransform: 'capitalize', paddingBottom:15}}>{book.author_name ? book.author_name[0] : 'Unknown Author'}</Text>
             <TouchableOpacity 
                 style={styles.favoriteButton}
-                // onPress={() => addToFavorites(book)}
+                onPress={async () => await insertFavorite(book)}
             >
               <Text style={styles.favoriteButtonText}>Add to Favorites</Text>
             </TouchableOpacity>
