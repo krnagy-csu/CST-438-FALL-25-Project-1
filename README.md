@@ -128,4 +128,27 @@ My biggest victory was creating a theme that was consistent for both light and d
 - Final assessment of the project
 I’m really grateful for the group I got to work with, they all have a good work ethic and were all very supportive and willing to help one another. There are many things I wish I could have been able to add to this project but I’m proud of what I was able to accomplish. There were some parts of React Native Expo that I found great to work with but there were other parts that made me want to scream my head off. Overall, this project was a good experience.
 
+### Krystelle Barroso
+
+- Pull Requests [here](https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/issues?q=is%3Aopen%20is%3Apr%20author%3Akbarr1212)
+- Issues [here](https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/issues?q=state%3Aclosed%20assignee%3Akbarr1212)
+
+#### What was your role / which stories did you work on
+Mainly worked on the search bar functionality which included making an API call to get results. Also, worked on the front end design of the search page.
+
++ What was the biggest challenge?
+	+ Managing conflicts after merging to main
++ Why was it a challenge?
+	+ The app would break after merging to main sometimes which stunted our work
++ How was the challenge addressed?
+	+ Some ChatGPT was used for one of my errors in the beginning
+	+ Some help from the TA
++ Favorite / most interesting part of this project
+	+ Using the API to find results for a user’s search query
++ If you could do it over, what would you change?
+	+ Simulate the app on android earlier not just on the web
+	+ Update current issue being worked on and close them accordingly on github
++ What is the most valuable thing you learned?
+	+ Learning the flow of git branches, merges, and pushes
+
 
