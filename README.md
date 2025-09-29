@@ -21,7 +21,7 @@ https://docs.expo.dev/
 - My issues: https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/issues?q=is%3Aissue%20state%3Aopen%20author%3Agabe-tommi
 
 #### What was your role / which stories did you work on
-I worked primarily with SQL and authentication. I developed a new component for authenticatioin, built the initial database, did some routing, and attempted to insert data from API calls to the database.
+I worked primarily with SQL and authentication. I developed a new component for authentication, built the initial database, did some routing, and attempted to insert data from API calls to the database.
 
 + What was the biggest challenge?
 + The biggest challenge for me was the errors by far. They just piled up constantly. There is very little documentation for any given expo package on the site. I also didn't realize it was supposed to run on android until the last minute, for some reason, it just slipped my mind. I spent the last week trying and failing to get it running on android while the database languishes in errors, being mostly unused. There was honestly too many issues to count, but I'm proud of authentication working despite being buggy. React has a LOT of dependency issues, and they are constantly fighting with eachother. Changing one version to fit another often breaks 10 other necessary packages. I'm very familiar with git revert by now at least.
@@ -36,7 +36,7 @@ I worked primarily with SQL and authentication. I developed a new component for 
 + If you could do it over, what would you change?
 + I'm honestly not sure. I did what I could. I probably could have done it faster and in a less buggy way, but this project was pretty trial-by-fire. It was good experience, and if I could have done it again I probably would have done it better than I did the first time.
 + What is the most valuable thing you learned?
-+ An impossible task isn't always a challenge. Taking breaks is important to solve the worst of problems. Even though I didn't end up solving many, I can at least be proud of what I did get done and know that if I did have the time I'm sure I could fix.
++ An impossible task isn't always a challenge. Taking breaks is important to solve the worst of problems. Even though I didn't end up solving many, I can at least be proud of what I did get done and know that if I did have the time I'm sure I could fix them.
 
 ## Conclusion
 
