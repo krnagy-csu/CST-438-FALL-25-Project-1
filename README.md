@@ -46,3 +46,42 @@ I worked primarily with SQL and authentication. I developed a new component for 
 - Being able to get done what we got done in such a short time frame, especially with no experience and little guidance regarding React and expo.
 - Final assessment of the project
 - We're all proud of what we got done and how well we worked together to get a difficult task done.
+
+---
+
+### Krisztian Nagy
+
+- Pull Requests 
+-#49, #30, #8
+- Issues 
+	-#16 & 24 (the big ones that doomed me), #11, and there was one to make the actual registration page that I lost somewhere
+
+#### What was your role / which stories did you work on
+I did a bit of front-end and a bit of back-end; I was supposed to do user profiles and the profile page and the login page, and while the login page went quite well, the latter really didn’t pan out.
+
++ What was the biggest challenge?
+	+ Learning React itself and figuring out how any of this worked.
++ Why was it a challenge?
+	+ For some reason I just struggled massively and was completely unable to wrap my head around it, to the point where I wasn’t able to do many of the things I had planned to.
++ How was the challenge addressed?
+	+ I studied up on it, but I still don’t really get it
++ Favorite / most interesting part of this project
+	+ Seeing my connection to the database work, and learning about all the different react components and trying to make them work
++ If you could do it over, what would you change?
+	+ Spend the first weeks just making sure I knew React in and out and was able to work properly with it.
+	+ Be more realistic with my time estimates and my estimates of my own ability
+	+ Budget time better so that a few emergencies wouldn’t blow up my ability to make progress
+	+ Avoid updating packages on my laptop, as that essentially killed my ability to work on the project for days at a critical point while I tried to figure it out
++ What is the most valuable thing you learned?
+	+ The importance of learning as much as you can about something before you start trying to stretch your abilities with it.
+
+## Conclusion
+
+- How successful was the project?
+  - Think in terms of what did you set out to do and what actually got done?
+	I would consider it a mixed success. Most of what I set out to accomplish failed, but at the end I did at least manage to create a core part of the functionality
+- What was the largest victory?
+	Getting the project actually up and running again
+- Final assessment of the project
+	We had high hopes; this could have turned out really well; I definitely feel I personally let the team down a lot by not being able to get done what I had intended to
+
