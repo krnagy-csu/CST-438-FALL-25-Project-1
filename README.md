@@ -9,16 +9,15 @@ https://docs.expo.dev/
 
 ## Introduction
 
-* How was communication managed
-* How many stories/issues were initially considered
-* How many stories/issues were completed
+*
+* Communication was done via discord group chat, which was really efficient. Initially, we had 22 stories and got through about 10 of them regarding core functionality and formatting. This is not including work on issues that were in progress. 
 
 ## Team Retrospective
 
 ### Gabe Gallagher
 
 - Pull requests: https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/pulls?q=is%3Apr+is%3Aclosed+author%3Agabe-tommi
-- My issues: https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/issues?q=is%3Aissue%20state%3Aopen%20author%3Agabe-tommi
+- My issues:https://github.com/krnagy-csu/CST-438-FALL-25-Project-1/issues?q=is%3Aissue%20state%3Aopen%20assignee%3Agabe-tommi
 
 #### What was your role / which stories did you work on
 I worked primarily with SQL and authentication. I developed a new component for authentication, built the initial database, did some routing, and attempted to insert data from API calls to the database.
