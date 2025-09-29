@@ -2,7 +2,7 @@
 
 
 ## Overview
-This is a book application we built using this API: (https://github.com/public-apis/public-apis?tab=readme-ov-file).
+This is a book application we built using this API: https://openlibrary.org/dev/docs/api/search
 
 Most of the software on this assignment was built with the help of the expo documentation for SQLite, jest testing, and styling:
 https://docs.expo.dev/
