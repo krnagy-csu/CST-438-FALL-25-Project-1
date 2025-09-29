@@ -85,3 +85,47 @@ I did a bit of front-end and a bit of back-end; I was supposed to do user profil
 - Final assessment of the project
 	We had high hopes; this could have turned out really well; I definitely feel I personally let the team down a lot by not being able to get done what I had intended to
 
+_________________________________________________
+
+### Liliana Saavedra
+
+- Pull Requests 
+- Home landing page by Liliana-Saavedra · Pull Request #31 · krnagy-csu/CST-438-FALL-25-Project-1
+- Added project description for sign in page onto by Liliana-Saavedra · Pull Request #32 · krnagy-csu/CST-438-FALL-25-Project-1
+- Home Page Setup and Design by Liliana-Saavedra · Pull Request #40 · krnagy-csu/CST-438-FALL-25-Project-1
+- Home landing page by Liliana-Saavedra · Pull Request #44 · krnagy-csu/CST-438-FALL-25-Project-1
+- Home landing page by Liliana-Saavedra · Pull Request #45 · krnagy-csu/CST-438-FALL-25-Project-1
+
+- Issues 
+	- Considerations · Issue #18 · krnagy-csu/CST-438-FALL-25-Project-1
+	- Home page additions · Issue #23 · krnagy-csu/CST-438-FALL-25-Project-1
+	- Landing/home page · Issue #20 · krnagy-csu/CST-438-FALL-25-Project-1
+	- Add special features · Issue #26 · krnagy-csu/CST-438-FALL-25-Project-1
+
+#### What was your role / which stories did you work on
+My role was front-end developer. I worked mainly in index.tsx and worked on making the page look neat and uniformed.
+
++ What was the biggest challenge?
+	+ My biggest challenge was learning how to use React-Native to implement fonts
++ Why was it a challenge?
+	+ This was a challenge because (according to the several sources I found) there is no easy 1 step to get fonts into a React Native project like we would on an HTML page. 
++ How was the challenge addressed?
+	+ I looked towards several articles, documentations, and videos to try to get fonts up but everything I tried led to one error which led to even more errors. 
++ Favorite / most interesting part of this project
+	+ My favorite part of this project was implementing a Parallax scroll and light/dark mode.
++ If you could do it over, what would you change?
+	+ If I could do it all over, I’d like to break up my issues into smaller parts and implement more visual features. I had many things planned to implement but ran out of time to get them all in. If I could, I’d like to go back and add them to this project to use as a portfolio piece.
++ What is the most valuable thing you learned?
+	+ The most valuable thing I learned was how to use my resources (documents, videos, etc.) to learn a new program quickly to develop an app.
+
+## Conclusion
+
+- How successful was the project?
+  - Think in terms of what did you set out to do and what actually got done?
+In terms of what I set out to do, there is a lot I could have improved on. I’m proud of what I was able to achieve but I would have liked to do more with my part. An unfortunate visit to the ER slowed down my progress but also reminded me to pace myself when I can.
+- What was the largest victory?
+My biggest victory was creating a theme that was consistent for both light and dark themes. I found that manipulating color transparency works really well for this because it lets you keep a color static for both modes but appear different because the lower transparency makes it overlay the theme.
+- Final assessment of the project
+I’m really grateful for the group I got to work with, they all have a good work ethic and were all very supportive and willing to help one another. There are many things I wish I could have been able to add to this project but I’m proud of what I was able to accomplish. There were some parts of React Native Expo that I found great to work with but there were other parts that made me want to scream my head off. Overall, this project was a good experience.
+
+
