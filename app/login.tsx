@@ -1,111 +1,114 @@
 import { getDb, initDatabase } from '@/db/db';
-import { useSQLiteContext } from 'expo-sqlite';
-import React, { useEffect, useState } from 'react';
-import { Text, View, Button, TextInput, ToastAndroid} from 'react-native';
-import { StyleSheet } from 'react-native';
-import { router, useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Text, View, Button, TextInput, StyleSheet, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function loginScreen(){
+export default function LoginScreen() {
   initDatabase();
+  
   const [passwordValue, setPasswordValue] = useState('');
-  const [usernameValue, setuserNameValue] = useState('');
-  // console.log(passwordValue);
-  // console.log(usernameValue);
+  const [usernameValue, setUsernameValue] = useState('');
   const router = useRouter();
 
+  async function handleLogin() {
+    try {
+      const db = await getDb();
+      const username = usernameValue.trim();
+      const password = passwordValue.trim();
+
+      if (!username || !password) {
+        Alert.alert("Error", "Please enter both a username and password.");
+        return;
+      }
+
+      const result = await db.getFirstAsync(
+        `SELECT userId FROM users WHERE LOWER(username) = LOWER(?) AND password = ?;`,
+        [username, password]
+      );
+
+      if (result) {
+        await AsyncStorage.setItem('userToken', 'loggedIn');
+        await AsyncStorage.setItem('username', username);
+        console.log("User authenticated");
+        router.replace('/'); 
+      } else {
+        Alert.alert("Login Failed", "Invalid username or password.");
+        console.log(result);
+        const allUsers = await db.getAllAsync(`SELECT * FROM users`);
+        console.log("Registered Users:", allUsers);
+      }
+    } catch (err) {
+      console.error("Error during login:", err);
+      Alert.alert("Database Error");
+    }
+  }
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-      }}>
- 
-      <Text>Welcome to BookMark!</Text>
-      <Text>Enter your details to log in.</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to BookMark!</Text>
+      <Text style={styles.subtitle}>Enter your details to log in.</Text>
 
       <TextInput 
         style={styles.textinput}
         placeholder='Username'
-        onChangeText={ setuserNameValue }
+        onChangeText={setUsernameValue}
+        autoCapitalize='none'
+      />
 
-      ></TextInput>
-
-    <TextInput 
+      <TextInput 
         style={styles.textinput}
         secureTextEntry={true}
         placeholder='Password'
-        onChangeText={ setPasswordValue }
-      ></TextInput> 
+        onChangeText={setPasswordValue}
+      /> 
 
       <Button 
-      title='Submit'
-      onPress={() => handleLogin(usernameValue, passwordValue)}></Button>   
+        title='Log In'
+        onPress={handleLogin}
+      />   
 
-      <Text>Don't have an account?</Text>
-      <Button
-      title = 'Register'
-      onPress={() => {console.log("Works?"), router.replace('/register')}}></Button>
-      
+      <View style={styles.registerContainer}>
+        <Text>Don't have an account?</Text>
+        <Button
+          title='Register'
+          onPress={() => {
+            router.replace('/register');
+          }}
+        />
       </View>
+    </View>
   );
-};
-
-async function handleLogin(username: string, password: string){
-  // try{
-  //   // I know this has unknown type errors, it's because of the async stuff. please dont touch !
-  //   const db = await getDb();
-  //   const rows = await db.getAllAsync(`SELECT * FROM users`);
-  //   let userFound = false;
-
-  //   for (const row of rows){
-  //       // console.log(row.password);
-  //       // console.log(row.username);
-  //       if(row.password == password && row.username == username){
-  //         await AsyncStorage.setItem('userToken', 'loggedIn');
-  //         console.log("user authenticated");
-  //         router.push('/');
-  //         userFound = true;
-  //       }
-  //   }
-  //   if(!userFound){
-  //     alert("login credentials not found!");
-  //   }
-  // }
-  // catch(err){
-  //   console.log(err);
-  // }
-
-  try{
-    let userFound = false;
-    await AsyncStorage.setItem('userToken', 'loggedIn');
-    console.log("user authenticated");
-    router.push('/');
-    userFound = true;
-  
-    if(!userFound){
-      alert("login credentials not found!");
-    }
-  }
-  catch(err){
-    console.log(err);
-  }
 }
 
-
 const styles = StyleSheet.create({
-  textinput: {
-    height: 30,
-    margin: 10,
-    borderWidth: 1,
-    padding: 15,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 20,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  textinput: {
+    width: '80%',
+    height: 45,
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 5,
+  },
+  registerContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  }
 });
-
-
-
-
-
-

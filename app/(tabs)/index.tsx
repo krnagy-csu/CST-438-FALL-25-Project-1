@@ -20,7 +20,6 @@ import { getDb, initDatabase } from '@/db/db';
 // }
 
 export default function HomeScreen() {
-  initDatabase();
   return (
     <ParallaxScrollView
       //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)
@@ -33,6 +32,7 @@ export default function HomeScreen() {
           style={styles.otterLogo}
         />
       }>
+        <Text>Welcome, {AsyncStorage.getItem('username')}</Text>
       {/* //New view, including a text box, formatted to the style described at the bottom of this file */}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Discover countless titles</ThemedText>
