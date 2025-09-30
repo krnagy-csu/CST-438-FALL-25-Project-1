@@ -10,7 +10,7 @@ export async function getDb(): Promise<SQLite.SQLiteDatabase> {
   return db;
 }
 
-async function initDatabase(db: SQLite.SQLiteDatabase) {
+export async function initDatabase(db: SQLite.SQLiteDatabase) {
     await db.execAsync(
         `
         PRAGMA foreign_keys = ON;
@@ -19,7 +19,6 @@ async function initDatabase(db: SQLite.SQLiteDatabase) {
         userId INTEGER PRIMARY KEY NOT NULL,
         username TEXT NOT NULL,
         password TEXT NOT NULL, 
-        FOREIGN KEY(bookId) REFERENCES books ON DELETE CASCADE
         );
 
         CREATE TABLE IF NOT EXISTS books (

@@ -1,4 +1,4 @@
-import { getDb } from '@/db/db';
+import { getDb, initDatabase } from '@/db/db';
 import { useSQLiteContext } from 'expo-sqlite';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Button, TextInput, ToastAndroid} from 'react-native';
@@ -7,6 +7,7 @@ import { router, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function loginScreen(){
+  initDatabase();
   const [passwordValue, setPasswordValue] = useState('');
   const [usernameValue, setuserNameValue] = useState('');
   // console.log(passwordValue);
@@ -46,29 +47,44 @@ export default function loginScreen(){
       <Text>Don't have an account?</Text>
       <Button
       title = 'Register'
-      onPress={() => router.push('/register')}></Button>
+      onPress={() => {console.log("Works?"), router.replace('/register')}}></Button>
       
       </View>
   );
 };
 
 async function handleLogin(username: string, password: string){
-  try{
-    // I know this has unknown type errors, it's because of the async stuff. please dont touch !
-    const db = await getDb();
-    const rows = await db.getAllAsync(`SELECT * FROM users`);
-    let userFound = false;
+  // try{
+  //   // I know this has unknown type errors, it's because of the async stuff. please dont touch !
+  //   const db = await getDb();
+  //   const rows = await db.getAllAsync(`SELECT * FROM users`);
+  //   let userFound = false;
 
-    for (const row of rows){
-        // console.log(row.password);
-        // console.log(row.username);
-        if(row.password == password && row.username == username){
-          await AsyncStorage.setItem('userToken', 'loggedIn');
-          console.log("user authenticated");
-          router.push('/');
-          userFound = true;
-        }
-    }
+  //   for (const row of rows){
+  //       // console.log(row.password);
+  //       // console.log(row.username);
+  //       if(row.password == password && row.username == username){
+  //         await AsyncStorage.setItem('userToken', 'loggedIn');
+  //         console.log("user authenticated");
+  //         router.push('/');
+  //         userFound = true;
+  //       }
+  //   }
+  //   if(!userFound){
+  //     alert("login credentials not found!");
+  //   }
+  // }
+  // catch(err){
+  //   console.log(err);
+  // }
+
+  try{
+    let userFound = false;
+    await AsyncStorage.setItem('userToken', 'loggedIn');
+    console.log("user authenticated");
+    router.push('/');
+    userFound = true;
+  
     if(!userFound){
       alert("login credentials not found!");
     }
@@ -77,6 +93,7 @@ async function handleLogin(username: string, password: string){
     console.log(err);
   }
 }
+
 
 const styles = StyleSheet.create({
   textinput: {

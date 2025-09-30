@@ -1,7 +1,6 @@
 import React from 'react';
-import {Text, View, Button, TextInput} from 'react-native';
+import { Text, View, Button, TextInput } from 'react-native';
 import { StyleSheet } from 'react-native';
-import {useForm, SubmitHandler} from "react-hook-form";
 import insertUserUnique from '@/components/dbComponents/insertUserUnique';
 import checkMatch from '@/components/registrationComponents/registrationComponents';
 import { router } from 'expo-router';
@@ -9,18 +8,6 @@ var username = "";
 var password = "";
 var passwordConfirm = "";
 const registerScreen = () => {
-    type Inputs ={
-        username: string
-        password: string
-        passwordConfirm: string
-    }
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: {errors},
-    } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
   return (
     <View
       style={{
@@ -32,31 +19,31 @@ const registerScreen = () => {
 
       <Text>Welcome to BookMark!</Text>
       <Text>Please enter your new account's details.</Text>
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInput
+
+      <TextInput
         placeholder='Username'
-        style = {styles.textinput}
+        style={styles.textinput}
         onChangeText={updateUsername}
-        ></TextInput>
-        <br></br>
-        <TextInput
+      />
+
+      <TextInput
         placeholder='Password'
-        style = {styles.textinput}
+        style={styles.textinput}
         onChangeText={updatePassword}
-        ></TextInput>
-        <br></br>
-        <TextInput
+        secureTextEntry={true}
+      />
+
+      <TextInput
         placeholder='Confirm Password'
-        style = {styles.textinput}
+        style={styles.textinput}
         onChangeText={updateConfirmPassword}
-        ></TextInput>
-        <br></br>
-        
-        <Button
-        title = 'submit Registration'
-        onPress = {async () => { await sendRegistration(), router.push("/login") }} ></Button>
-        
-    </form>
+        secureTextEntry={true}
+      />
+
+      <Button
+        title='Submit Registration'
+        onPress={async () => { await sendRegistration(), router.push("/login") }}
+      />
     </View>
   );
 };
@@ -70,26 +57,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const sendRegistration = async() =>{
+const sendRegistration = async () => {
   //check if passwords match; check if exists in DB; if both good, send it
-  alert("Username: "+username+"; Password:"+password);
-  if (!checkMatch(password,passwordConfirm)){
+  alert("Username: " + username + "; Password:" + password);
+  if (!checkMatch(password, passwordConfirm)) {
     alert("Passwords do not match!");
     return;
   } else {
-    insertUserUnique(username,password);
+    insertUserUnique(username, password);
   }
 
 }
-function updateUsername(newText:string){
+function updateUsername(newText: string) {
   username = newText;
   return newText;
 }
-function updatePassword(newText:string){
+function updatePassword(newText: string) {
   password = newText;
   return newText;
 }
-function updateConfirmPassword(newText:string){
+function updateConfirmPassword(newText: string) {
   passwordConfirm = newText;
   return newText;
 }

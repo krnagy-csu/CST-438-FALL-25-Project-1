@@ -1,52 +1,26 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
-import  { Alert, Button} from 'react-native';
+import { Alert, Button } from 'react-native';
 //for search bar
-import {TextInput, SafeAreaView } from 'react-native';
+import { TextInput, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
-
-
-// Note for gabe: this page ideally includes authentication, and acts
-// as a check to see if the user is logged in, as should every page except log in.
-// if not authenticated, route user to login.
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import AuthCheck from '@/components/registrationComponents/authCheck';
 import { Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { router } from 'expo-router';
+import { getDb, initDatabase } from '@/db/db';
 
-useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const userToken = "notloggedin"; // no idea why this fixes session token, but dont touch it
-        userToken = await AsyncStorage.getItem('userToken');
-        console.log(userToken);
-        if (userToken != 'loggedIn') {
-          router.replace('/login');
-        }
-      } catch (error) {
-        console.error('Error checking authentication:', error);
-        router.replace('/login');
-      }
-    };
-
-    checkAuth();
-  }, []);
-
-
-const textEx = () => {
-  const[text, onChangeText] = React.useState('Ehhhh');
-  const [number, onChangeNumber] = React.useState('');
-}
+// const textEx = () => {
+//   const [text, onChangeText] = React.useState('Ehhhh');
+//   const [number, onChangeNumber] = React.useState('');
+// }
 
 export default function HomeScreen() {
-  console.log(AsyncStorage.getItem('userToken'));
+  initDatabase();
   return (
     <ParallaxScrollView
       //makes the page dynamic, color pallete changes depending on the user's system theme (light/dark mode)
@@ -73,30 +47,30 @@ export default function HomeScreen() {
         // (title, author, maybe publisher or publication date (REVIEW API CONTENTS))
         //Search bar still in progress */}
 
-          {/* //Search Bar 
+        {/* //Search Bar 
           //DEBUGGING NEEDED; ADD SEARCH FUNCTIONALITY */}
-          <TextInput
-            style={styles.searchBox}
-            // onChangeText={onChangeNumber}
-            // value={number}
-            placeholder="Search"
-            keyboardType="numeric"
-            // autoCorrect;
+        <TextInput
+          style={styles.searchBox}
+          // onChangeText={onChangeNumber}
+          // value={number}
+          placeholder="Search"
+          keyboardType="numeric"
+        // autoCorrect;
+        />
+
+        {/* //Button still in progress (size modification and functionality needed (advanced)) */}
+        <View style={styles.fitToText}>
+          <Button
+            // style = {{buttoncolor:'red'}}
+            onPress={() => {
+              console.log('tapped')
+            }}
+            color="#346da3a7"
+            title="Enter"
           />
+        </View>
 
-          {/* //Button still in progress (size modification and functionality needed (advanced)) */}
-          <View style={styles.fitToText}>
-            <Button
-                // style = {{buttoncolor:'red'}}
-                onPress={() => {
-                  console.log('tapped')
-                }}
-                color="#346da3a7"
-                title="Enter"
-              />
-          </View>
-
-       {/* <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        {/* <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '}
@@ -126,7 +100,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText> */}
       </ThemedView>
-    </ParallaxScrollView>    
+    </ParallaxScrollView>
   );
 }
 
@@ -145,7 +119,7 @@ const styles = StyleSheet.create({
     // lowering the transparency creates the PERFECT effect that
     // makes this color appealing in both light and dark mode
     backgroundColor: "#41928d49",
-    
+
   },
   otterLogo: {
     height: 400,
@@ -160,12 +134,12 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 10,
   },
-  searchBox:{
-    height:40,
-    margin:12,
-    
+  searchBox: {
+    height: 40,
+    margin: 12,
+
     // marginRight:-500,
-    borderWidth:1,
+    borderWidth: 1,
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
